@@ -12,7 +12,6 @@ from src.core.approximate_shift_and import ApproximateShiftAnd
 
 class App:
     INI_FILE = "app.ini"
-    WORDS_FILE = "words.txt"
 
     def __load_ini_file(self, filename):
         full_path = os.path.abspath(os.path.join("./src", filename))
@@ -42,13 +41,13 @@ class App:
 
     def __init__(self) -> None:
         if self.__load_ini_file(self.INI_FILE):
-            if self.__load_words_file(self.WORDS_FILE):
+            if self.__load_words_file(self.config["utils"]["words_file"]):
                 self.__run()
 
     def __run(self):
         try:
             print(
-                f'{self.config["app"]["app_name"]} - {self.config["app"]["app_version"]}\nDeveloped by: {self.config["app"]["app_authors"]}')
+                f'{self.config["app"]["app_name"]} - {self.config["app"]["app_version"]}\nDeveloped by: {self.config["app"]["app_authors"]}\n')
             brute_force = BruteForce(self.words.read(), "lorem")
             bmh = BMH(self.words.read(), "ipsum")
             bmhs = BMHS(self.words.read(), "dolor")

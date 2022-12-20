@@ -19,16 +19,15 @@ class App:
         else:
             logging.basicConfig(level=logging.ERROR, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                                 filename='logs/app.log', filemode='w',)
-            logging.error("Não foi possível carregar o arquivo de configuração em {}".format(
-                path_config_file))
+            logging.error(f"Couldn't load file in {path_config_file}")
             return False
 
     def __load_words_file(self, filename):
         try:
             full_path = os.path.abspath(os.path.join("./src/utils/", filename))
             path_words_file = full_path if os.path.isfile(full_path) else \
-            os.path.abspath(os.path.join(
-                os.path.dirname(sys.executable), filename))
+                os.path.abspath(os.path.join(
+                    os.path.dirname(sys.executable), filename))
             self.words = open(path_words_file, 'r', encoding='utf-8')
             return True
         except Exception as e:
@@ -41,7 +40,10 @@ class App:
                 self.__run()
 
     def __run(self):
-        print(f'''{self.config["app"]["app_name"]} - {self.config["app"]["app_version"]}
-Developed by: {self.config["app"]["app_authors"]}''')
-        print(self.words.read())
-        self.words.close()
+        try:
+            print(
+                f'{self.config["app"]["app_name"]} - {self.config["app"]["app_version"]}\nDeveloped by: {self.config["app"]["app_authors"]}')
+        except Exception as e:
+            logging.error(f"Something went wrong: {e}")
+        finally:
+            self.words.close()

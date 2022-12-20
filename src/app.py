@@ -3,6 +3,12 @@ import logging
 import os
 import sys
 
+from src.core.brute_force import BruteForce
+from src.core.bmh import BMH
+from src.core.bmhs import BMHS
+from src.core.exact_shift_and import ExactShiftAnd
+from src.core.approximate_shift_and import ApproximateShiftAnd
+
 
 class App:
     INI_FILE = "app.ini"
@@ -34,7 +40,7 @@ class App:
             logging.error(f"Failed to open words file: {e}", exc_info=True)
             return False
 
-    def __init__(self):
+    def __init__(self) -> None:
         if self.__load_ini_file(self.INI_FILE):
             if self.__load_words_file(self.WORDS_FILE):
                 self.__run()
@@ -43,6 +49,11 @@ class App:
         try:
             print(
                 f'{self.config["app"]["app_name"]} - {self.config["app"]["app_version"]}\nDeveloped by: {self.config["app"]["app_authors"]}')
+            brute_force = BruteForce(self.words.read(), "lorem")
+            bmh = BMH(self.words.read(), "ipsum")
+            bmhs = BMHS(self.words.read(), "dolor")
+            exact_shift_and = ExactShiftAnd(self.words.read(), "sit")
+            approximate_shift_and = ApproximateShiftAnd(self.words.read(), "amet")
         except Exception as e:
             logging.error(f"Something went wrong: {e}")
         finally:

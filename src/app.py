@@ -1,6 +1,7 @@
 import configparser
 import logging
 import os
+import re
 import sys
 
 from src.core.brute_force import BruteForce
@@ -48,11 +49,17 @@ class App:
         try:
             print(
                 f'{self.config["app"]["app_name"]} - {self.config["app"]["app_version"]}\nDeveloped by: {self.config["app"]["app_authors"]}\n')
-            brute_force = BruteForce(self.words.read(), "lorem")
-            bmh = BMH(self.words.read(), "ipsum")
-            bmhs = BMHS(self.words.read(), "dolor")
-            exact_shift_and = ExactShiftAnd(self.words.read(), "sit")
-            approximate_shift_and = ApproximateShiftAnd(self.words.read(), "amet")
+
+            tokens = []
+            splited_tokens = self.words.read().split(' ')
+            for token in splited_tokens:
+                tokens.append(re.sub('[^A-Za-z0-9]+', '', token))
+
+            brute_force = BruteForce(tokens, "lorem")
+            bmh = BMH(tokens, "ipsum")
+            bmhs = BMHS(tokens, "dolor")
+            exact_shift_and = ExactShiftAnd(tokens, "sit")
+            approximate_shift_and = ApproximateShiftAnd(tokens, "amet")
         except Exception as e:
             logging.error(f"Something went wrong: {e}")
         finally:

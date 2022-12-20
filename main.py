@@ -11,7 +11,7 @@ def main():
     try:
         app = App()
     except Exception as e:
-        logging.error('Something went wrog', exc_info=True)
+        logging.error(f'Something went wrog: {e}', exc_info=True)
 
 
 if __name__ == "__main__":

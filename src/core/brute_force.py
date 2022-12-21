@@ -15,4 +15,5 @@ class BruteForce:
             index += 1
 
         print(f'Total matches for pattern "{pattern}" : {matches}')
-        print(f'--- Total Time: {(time.time() - start_time) * 1000} miliseconds ---')
+        print(
+            f'--- Total Time: {(time.time() - start_time) * 1000} miliseconds ---')

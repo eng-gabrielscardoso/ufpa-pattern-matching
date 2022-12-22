@@ -50,16 +50,13 @@ class App:
             print(
                 f'{self.config["app"]["app_name"]} - {self.config["app"]["app_version"]}\nDeveloped by: {self.config["app"]["app_authors"]}\n')
 
-            tokens = []
-            splited_tokens = self.words.read().split(' ')
-            for token in splited_tokens:
-                tokens.append(re.sub('[^A-Za-z0-9]+', '', token))
+            tokens = self.words.read()
 
             brute_force = BruteForce(tokens, "lorem")
             bmh = BMH(tokens, "ipsum")
-            bmhs = BMHS(tokens, "dolor")
-            exact_shift_and = ExactShiftAnd(tokens, "sit")
-            approximate_shift_and = ApproximateShiftAnd(tokens, "amet")
+            # bmhs = BMHS(tokens, "dolor")
+            # exact_shift_and = ExactShiftAnd(tokens, "sit")
+            # approximate_shift_and = ApproximateShiftAnd(tokens, "amet")
         except Exception as e:
             logging.error(f"Something went wrong: {e}")
         finally:

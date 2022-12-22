@@ -1,4 +1,5 @@
 import logging
+import re
 import time
 
 
@@ -12,7 +13,12 @@ class BruteForce:
 
         try:
             print("# Brute force algorithm")
-            for word in tokens:
+            filtered_tokens = []
+            splited_tokens = tokens.split(' ')
+            for token in splited_tokens:
+                filtered_tokens.append(re.sub('[^A-Za-z0-9]+', '', token))
+
+            for word in filtered_tokens:
                 if word == pattern:
                     print(f"Found match in position: {index}")
                     matches += 1

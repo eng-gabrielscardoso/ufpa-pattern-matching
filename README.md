@@ -12,8 +12,6 @@
 
 **Students**: CARDOSO, Gabriel Santos; SOUZA, Leandro Marcos Pinheiro.
 
----
-
 ## About the project
 
 This work is a project carried out for the purposes of the Data Structures 2 discipline, taught by Professor Dr. Reginaldo Cordeiro dos Santos Filho, for the Information Systems and Computer Science course at the Faculty of Computing (Faculdade de Computação) – FACOMP, Institute of Exact and Natural Sciences (Instituto de Ciências Exatas e Naturais) – ICEN at the Federal University of Pará (Universidade Federal do Pará) – UFPA.

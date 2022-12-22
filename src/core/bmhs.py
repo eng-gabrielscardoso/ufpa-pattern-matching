@@ -11,6 +11,33 @@ class BMHS:
 
         try:
             print("# BMHS algorithm")
+            m = len(pattern)
+            n = len(tokens)
+
+            if m > n:
+                print(
+                    "The given tokens are not enough to match pattern.")
+                return
+
+            skip = []
+            for k in range(256):
+                skip.append(m)
+            for k in range(m - 1):
+                skip[ord(pattern[k])] = m - k
+
+            skip = tuple(skip)
+            k = m - 1
+
+            while k < n:
+                j = m - 1
+                i = k
+                while j >= 0 and tokens[i] == pattern[j]:
+                    j -= 1
+                    i -= 1
+                if j == -1:
+                    matches += 1
+                    print(f"Found match in position {i}")
+                k += skip[ord(tokens[k + 1])]
 
             print(f'Total matches for pattern "{pattern}" : {matches}')
         except Exception as e:

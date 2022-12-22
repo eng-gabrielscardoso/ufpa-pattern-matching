@@ -22,7 +22,19 @@ The project deals with the implementation of brute force algorithms, BMH, BMHS, 
 
 ### Running with SDK
 
-> Under development
+1. To run the project with the SDK you must have the most recent version of Python language installed in your machine.
+2. Clone the repository and navigate into then. After that, run the following command to install the requirements
+```bash
+pip install -r requirements.txt
+```
+> You must have the latest version of PIP installed in your system. More information [here](https://pip.pypa.io/en/stable/installation/).
+3. After it you have to run the following command to run the algorithm with the setted words collection in your `app.ini`
+```bash
+python3 main.py
+```
+> This command will run the entrypoint of the program. You could change the words file in your `src/app.ini` in the `[words]` section, `words_file` variable. The words files contains, respectively, `{ (T = 500), (T = 1000), (T = 1500), (T = 2000), (T = 5000) }` where T equals the number of words.
+
+> Also, in this project it's recommended to create a virtual machine to run and test the code. More information about the virtual machine [here](https://www.virtualbox.org/).
 
 ### Running with Docker
 

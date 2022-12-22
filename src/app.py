@@ -53,9 +53,9 @@ class App:
             tokens = self.words.read()
 
             brute_force = BruteForce(tokens, "lorem")
-            bmh = BMH(tokens, "ipsum")
-            bmhs = BMHS(tokens, "dolor")
-            exact_shift_and = ExactShiftAnd(tokens, "sit")
+            # bmh = BMH(tokens, "ipsum")
+            # bmhs = BMHS(tokens, "dolor")
+            # exact_shift_and = ExactShiftAnd(tokens, "sit")
             # approximate_shift_and = ApproximateShiftAnd(tokens, "amet")
         except Exception as e:
             logging.error(f"Something went wrong: {e}")

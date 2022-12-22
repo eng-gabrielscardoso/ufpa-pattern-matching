@@ -15,4 +15,6 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    for i in range(10):
+        print(f"\n ######## Execution {i + 1} ########\n")
+        main()
